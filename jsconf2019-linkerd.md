@@ -242,3 +242,6 @@ alt up
 alt down
 or use mouse
 ```
+
+## Docs
+* https://www.youtube.com/watch?v=pTSKLoK4HYA Using Linkerd as a Service Mesh for your Microservices (Janakiram)
