@@ -71,7 +71,7 @@ wrk -t12 -c400 -d30s http://${SVCIPNGINX}/index.html
 *	Show node.js in mesh (Linkerd) -> linkerd tap deploy/weather-api -n hackfest   # click on weather API
 
 
-### Linkerd Dashboard
+### Access the Linkerd Dashboard from your local laptop
 ```
 LDWEB=$(kubectl get pods --selector=linkerd.io/control-plane-component=web -n linkerd -o=jsonpath='{.items[0].metadata.name}')
 kubectl port-forward -n linkerd $LDWEB 8084:8084
@@ -110,9 +110,9 @@ export MONGODB_PASSWORD=$(az cosmosdb list-keys --name $COSMOSNAME --resource-gr
 
 # Find AppInsights
 az resource list --namespace microsoft.insights --resource-type components --query [*].[id] --out tsv
-/subscriptions/36d4fd22-fafb-4444-8888-888888888888/resourceGroups/dazaks-rg/providers/microsoft.insights/components/appInsightshackfestdevans26547
+/subscriptions/36d4fd22-fafb-4444-8888-888888888888/resourceGroups/dazaks-rg/providers/microsoft.insights/components/appInsightshackfestmyusername
 # Show the Instrumentation Key
-APPINSIGHTS_INSTRUMENTATIONKEY=$(az resource show --id "/subscriptions/36d4fd22-fafb-4444-8888-888888888888/resourceGroups/dazaks-rg/providers/microsoft.insights/components/appInsightshackfestdevans26547" --query properties.InstrumentationKey --o tsv)
+APPINSIGHTS_INSTRUMENTATIONKEY=$(az resource show --id "/subscriptions/36d4fd22-fafb-4444-8888-888888888888/resourceGroups/dazaks-rg/providers/microsoft.insights/components/appInsightshackfestmyusername" --query properties.InstrumentationKey --o tsv)
 
 kubectl create ns hackfest
 kubectl create secret generic cosmos-db-secret --from-literal=user=$MONGODB_USER --from-literal=pwd=$MONGODB_PASSWORD \ --from-literal=appinsights=$APPINSIGHTS_INSTRUMENTATIONKEY -n hackfest
@@ -168,7 +168,7 @@ linkerd inject mesh-inject/service-tracker-ui.yaml | kubectl apply -n hackfest -
 ## Sequence of demos
 #### Slide 16
 *	build a simple node.js container image
-*	run a simple node.js container image on VM -> http://20.184.25.139:8888
+*	run a simple node.js container image on VM -> http://20.20.100.100:8888
 *	demo draft
 
 #### Slide 20
